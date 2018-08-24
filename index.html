@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="pt-br">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!--ícone na aba-->
+        <link rel="shortcut icon" href="imagens/icone.png"/>
+
+		<!--jQuery-->
+		<script src="javascript/jquery-3.3.1.min.js"></script>
+
+		<!--JS-->
+		<script language="javascript" src="javascript/main.js"></script>
+
+		<!--CSS-->
+		<link rel="stylesheet" href="css/style.css">
+
+        <title>Bluetooth Low Energy</title>
+	</head>
+	
+	<body>
+		<nav class="fonte-grande negrito">
+			<img src="imagens/icone.jpg">
+			<span id="titulo">Bluetooth Low Energy</span>
+		</nav>
+		<ul class="clicavel fonte-media negrito">
+			<li id="link-intro">Introdução</li>
+			<li id="link-historia">História</li>
+			<li id="link-low-energy">Low Energy</li>
+			<li id="link-arquitetura">Arquitetura</li>
+			<li id="link-aplicacoes">Aplicações</li>
+			<li id="link-conclusao">Conclusão</li>
+			<li id="link-faq">FAQ</li>						
+			<li id="link-referencias">Referências</li>
+			<li id="link-autoria">Autoria</li>
+		</ul>
+		<div class="conteudo fonte-pequena centro" id="intro">
+			<h1>Introdução</h1>
+			
+			<div id="conteudo-intro">
+				<img id="img-ufrj" src="imagens/ufrj.jpg">
+				<p>Autores: <b>Lucas Chagas, Raphael Evangelista Filene</b></p>
+				<p>Universidade Federal do Rio de Janeiro (UFRJ)</p>
+				<p>Departamento de Engenharia Eletrônica (DEL)</p>
+				<p>Engenharia de Computação e Informação (ECI)</p>
+				<p>EEL878 - Redes de Computadores 1 - 2018.1</p>
+				<p>Professor: Luís Henrique M. K.</p>
+
+				<p>
+					Resumo: Este trabalho foi feito de modo a abordar o Bluetooth Low Energy (previamente conhecido por Bluetooth Smart), uma modificação da tecnologia Bluetooth clássica feita com o intuito de reduzir o gasto energético. Veremos a história do desenvolvimento do Bluetooth, desde suas versões iniciais até as mais recentes; também teremos uma breve descrição do Low Energy, e de como ele difere da tecnologia clássica. Passaremos por sua arquitetura, e logo como ele foi implementado, e por fim veremos algumas das aplicações para as quais ele está sendo utilizado na atualidade. Concluiremos o trabalho com 5 perguntas e respostas e as referências utilizadas durante seu processo de criação.
+				</p>		
+			</div>
+		</div>
+		
+		<div class="conteudo fonte-pequena justificado" id="historia">
+			<h1>História</h1>
+
+			<p>
+				O desenvolvimento do Bluetooth se iniciou em meados da década de 1990, buscando uma forma de permitir a comunicação entre celulares e acessórios (como fones de ouvido) sem necessitar de cabos para ligá-los. A ideia era realizar essa comunicação através de ondas de rádio de baixo custo, e foi inicialmente concebido e financiado pela empresa Ericsson. Logo o projeto começou a receber apoio de outras grandes empresas, e foi assim criado o Bluetooth SIG (<i>Bluetooth Special Interest Goup</i>) em 1998; apesar de ser inicialmente formado pelas empresas Ericsson, Intel, IBM, Nokia e Toshiba, muitas outras aderiram com o passar do tempo.  
+			</p>
+
+			<p>
+				O nome Bluetooth foi escolhido em homenagem ao rei viking Harald Bluetooth, conhecido por sua influência no processo de unificação da Escandinávia durante um período no qual a região era assolada por conflitos e guerras. Assim como o rei conseguira, essa nova tecnologia unificaria diferentes indústrias sob um mesmo método simples, barato e sem fio de comunicação. Foi também baseando-se nesse indivíduo que foi criado o logo do Bluetooth: ele nada mais é do que os caracteres rúnicos H e B (das iniciais de Harald e Bluetooth) sobrepostos.
+			</p>
+			
+			<p>
+				Suas versões iniciais (denominadas 1.0 e 1.0B) apresentavam problemas na interoperabilidade entre dispositivos via bluetooth. Muitos desses problemas foram resolvidos e pequenas melhorias foram feitas nas subsequentes versões 1.1 e 1.2. A velocidade de transferência de dados na versão 1.2 era de 721 Kb/s.  
+			</p>
+			
+			<p>
+				As próximas versões a serem lançadas foram as 2.0 e 2.1, com a maior novidade sendo o EDR (<i>Enhanced Data Rate</i>), que aumentava a velocidade de transferência para até 2.1 Mb/s. A seguir foi lançado a versão 3.0, que novamente trazia maiores velocidades com o HS (<i>High Speed</i>), podendo atingir até 24 Mb/s de transferência de dados.
+			</p>
+
+			<p>
+				Em dezembro de 2009, foi anunciada a versão 4.0. O principal diferencial desta versão, e que será o foco abordado neste trabalho, é o LE (<i>Low Energy</i>). Este permite uma economia de energia muito maior comparado ao gasto energético das versões anteriores. Esta redução no gasto energético vem principalmente da introdução de um novo método de transferência de dados em rajada, ao invés da transmissão contínua utilizada anteriormente.
+			</p>
+
+			<p>
+				No fim de 2013, foram lançadas as especificações da versão 4.1. Esta foi uma revisão da versão anterior, que buscava tornar a tecnologia ainda mais acessível para dispositos que se enquadravam na área de Internet das Coisas.
+			</p>
+
+			<p>
+				O último upgrade à versão 4 foi apresentado no final de 2014. A versão 4.2 trazia ainda mais melhorias, desta vez destacando-se a implementação de um suporte ao IPv6 e a adoção de um novo método de criptografia, melhorando a segurança e garantindo que apenas dispositivos devidamente autorizados pudessem se conectar a outros. 
+			</p>	
+
+			<p>
+				Finalmente, a versão mais recente foi apresentada no fim de 2016. O Bluetooth 5 permitia a comunicação em distâncias de até 40 metros (sendo que os anteriores trabalhavam em média com até 10 metros), e velocidade de transferência por baixa energia de até o dobro da oferecida na versão 4.2, ou seja, de até 2Mb/s. Destaca-se que cada nova versão do Bluetooth se manteve compatível com as versões anteriores, então dispositivos utilizando Bluetooth 4.2 podem enviar e receber informações de outros utilizando Bluetooth 2.0 por exemplo; assim, novos dispositivos ainda possuem capacidade de transferir dados a mais de 20 Mb/s quando necessário ao se comunicar com Bluetooth 3.0 (desde que seja dual chip, como veremos a seguir), não desfrutando das vantagens de baixa energia ao operar desse modo.
+			</p>		
+
+			<img id="img-bluetooth-1" src="imagens/bluetooth_history.jpg">
+			<span><i>Resumo das principais melhorias feitas no bluetooth com cada nova versão, até a 4.2. Retirado de: http://blueapp.io/blog/history-of-bluetooth/</i></span>												
+
+		</div>
+		
+		<div class="conteudo fonte-pequena justificado" id="low-energy">
+			<h1>Low Energy</h1>
+
+			<p>
+				O LE(<i>Low Energy</i>) é uma técnica que surgiu na versão 4.0 do Bluetooth. Enquanto versões mais antigas do Bluetooth, que passaram a ser conhecidas como "Bluetooth Clássico", eram comumente utilizadas em aplicações como fones de ouvido e auto-falantes sem fio, que requerem uma transmissão constante de dados, o foco do Bluetooth LE está em aplicações de curto alcance, baixa transferência de dados e maior vida útil de bateria. Alguns exemplos de aplicações seriam <i>smart watches</i>, sensores para Internet das Coisas, monitoramento de saúde e automação domiciliar. Estas e outras aplicações serão vistas com maior detalhes em seu respectivo tópico.
+			</p>	
+			
+			<p>
+				Como o nome indica, o baixo gasto de energia é seu aspecto mais importante, permitindo sensores em algumas aplicações funcionarem por múltiplos anos a partir de uma única bateria. Chips de bluetooth de baixa energia possuem um gasto energético consideravelmente menor que os de versões anteriores; esse menor gasto é obtido pois estes passam grande parte do tempo inativos, até que surja a necessidade de transferência de dados. Quando essa necessidade ocorre, o chip fica ativo, anuncia a necessidade de se comunicar com outro dispositivo, envia seus dados, e então volta à seu modo inativo. O tempo de setup e transferência dos dados pode ser de até 3ms, providenciando um método de operação de baixa latência que é eficiente para pequenas rajadas.
+			</p>
+
+			<img id="img-bluetooth-2" src="imagens/bluetooth-smart-comparison.jpg">
+			<span><i>Breve comparação entre Bluetooth Clássico e o Bluetooth LE. Adaptado de: https://www.lsr.com/embedded-wireless-modules/bluetooth-module</i></span>	
+
+			<p>
+				Com a introdução da tecnologia, foram criados dois chips capazes de utilizar o Bluetooth Low Energy: chips de modo único (<i>single mode</i>) e de modo duplo (<i>dual mode</i>). Chips de modo único utilizam exclusivamente da tecnologia LE, sendo otimizados para a operação ULP (<i>Ultra Low Power</i>); entretanto, estes chips podem se comunicar somente com tecnologias que implementam o LE, não podendo se comunicar com versões que implementam apenas o Bluetooth clássico. Por outro lado, chips de modo duplo possuem a capacidade de comunicação tanto com a tecnologia do Bluetooth clássico quanto com os chips que implementam LE. No entanto, como eles precisam executar tanto as tarefas de Bluetooth de baixa energia como as do Bluetooth clássico, os chips de modo duplo não são otimizados para a operação ULP no mesmo grau dos dispositivos de modo único.
+			</p>	
+			
+			<img id="bluetooth-img-grande" src="imagens/bluetooth-imagem-grande.jpg">
+			<span><i>Chips de modo duplo usam a parte de Bluetooth de baixa energia de sua arquitetura para se comunicarem com dispositivos de modo único. Retirado de: https://www.eetimes.com/document.asp?doc_id=1278425</i></span>
+
+			<p>
+				Os chips de modo único podem operar por longos períodos de tempo (meses ou até anos) a partir de uma bateria de célula tipo moeda. Em contraste, dispositivos que usam da tecnologia Bluetooth clássica (assim como os de modo duplo de Bluetooth LE) normalmente requerem a capacidade de pelo menos duas células AAA (que têm 10 a 12 vezes a capacidade de uma célula tipo moeda e tolerância de pico muito maior) e muitas vezes mais, para alimentá-los por dias ou semanas no máximo (dependendo da aplicação).
+			</p>
+
+		</div>
+
+		<div class="conteudo fonte-pequena justificado" id="arquitetura">
+			<h1>Arquitetura</h1>
+			
+			<p>
+				A arquitetura da pilha de protocolos do Bluetooth LE é dividida em <i>Host</i> e <i>Controller</i>, e pode ser vista em mais detalhes na imagem abaixo.
+			</p>
+
+			<img id="img-bluetooth-3" src="imagens/protocol_stack2.jpeg" alt="Protocol Stack" title="Protocol Stack">		
+			<span><i>Pilha de protocolos do Bluetooth LE. Retirado de: http://dev.ti.com/tirex/content/simplelink_cc2640r2_sdk_1_00_00_22/docs/blestack/html/ble-stack/index.html</i></span>
+
+			<p><b><i>Physical Layer</i> (PHY)</b></p>
+
+			<p>
+				Como foi criado com o intuito de ser utilizado internacionalmente, o Bluetooth LE opera no espectro ISM (<i>Industrial Scientific Medical</i>) de 2.4 GHz, atuando com 40 canais com 2 MHz de espaçamento. Dois tipos de canais são utilizados: canais de publicidade (<i>advertising channels</i>) e canais de dados (<i>data channels</i>). Canais de publicidade são utilizados para a descoberta de dispositivos Bluetooth e estabelecimento de conexão entre eles, enquanto canais de dados são usados para a comunicação bidirecional entre dois dispositivos conectados.
+			</p>
+
+			<p>
+				Três canais foram selecionados como canais de publicidade, e estes foram definidos em frequências com menor probabilidade de interferirem com redes Wi-Fi. Destaca-se que o Bluetooth clássico utiliza 32 canais, o que aumenta o tempo gasto buscando por dispositivos e consequentemente também aumenta o gasto energético.
+			</p>
+
+			<p>
+				Todos os outros canais foram definidos como canais de dados, e utilizam de um mecanismo conhecido por AFH (<i>Adaptative Frequency-Hopping Spread Spectrum</i>) de modo a reduzir problemas de interferência assim como outros problemas de comunicação sem fio. Este mecanismo determina qual dos 37 canais disponíveis será utilizado, mudando a seleção a cada determinado intervalo de tempo, através de uma sequência pseudoaleatória conhecida tanto pelo transmissor quanto pelo receptor.
+			</p>
+
+			<img id="img-bluetooth-3" src="imagens/channels.jpg" alt="Channels" title="Channels">
+			<span><i>Os canais de publicidade do Bluetooth LE foram escolhidos de modo a reduzir conflitos com Wi-Fi. Retirado de: https://www.eetimes.com/document.asp?doc_id=1278425</i></span>				
+
+			<p>
+				Todos os canais físicos utilizam modulação por GFSK (<i>Gaussian Frequency Shift Keying</i>), com índice entre 0.45 e 0.55, permitindo menor gasto energético e maior alcance. A taxa de transferência de dados é de 1 Mb/s para Bluetooth 4.0 até 4.2, e de 2 Mb/s para Bluetooth 5.
+			</p>
+
+			<p><b><i>Link Layer</i> (LL)</b></p>
+
+			<p>
+				É através desta camanda que sé é controlado o estado de conexão do dispositivo. Esse controle é feito através da definição de cinco estados: <i>Standby</i>, <i>Advertising</i>, <i>Scanning</i>, <i>Initiating</i> e <i>Connection</i>.
+			</p>
+
+			<p>
+				Dispositivos inativos, ou seja, que não enviam nem recebem pacotes, estão em <i>Standby</i>. O processo de conexão entre dois dispositivos Bluetooth se inicia quando um dispositivo, denominado <i>Advertiser</i>, repetidamente envia pacotes para cada advertising channel, esperando até que receba resposta de algum outro dispositivo. Ao receber esses pacotes, um dispositivo pode atuar de dois modos: indicar que pacotes estão sendo recebidos e requisitar mais informações (sendo neste caso denominado <i>Scanner</i>), ou enviar uma mensagem de requisição de conexão de volta ao <i>Advertiser</i> (sendo então um <i>Initiator</i>). Deste modo, o <i>Advertiser</i> e o <i>Initiator</i> iniciam uma conexão (entrando assim em estado <i>Connection</i>) e passam então a poder transferir dados entre si pelos canais de dados.
+			</p>
+
+			<p>
+				Ao se conectarem, os dispositivos Bluetooth criam uma rede denominada piconet. Esta rede é caracterizada pela presença de um mestre (<i>master</i>), responsável por regular a transmissão de dados, a sincronia entre os dispositivos e supervisar a conexão, enquanto os demais dispositivos são considerados escravos (<i>slaves</i>). Os escravos, de modo a poupar energia, usualmente permanecem inativos, checando se pacotes foram enviados em intervalos pré-determinados pelo mestre. Ao se conectarem, o <i>Initiator</i> assume o papel de mestre e o <i>Advertiser</i> o de escravo.
+			</p>
+
+			<p>
+				Diferentemente do Blueetooth clássico, que criava piconets com obrigatoriamente um mestre e até sete escravos, o Bluetooth LE aumentou consideravelmente o tamanho destinado ao endereçamento (de 3 bits para 48 bits), o que possibilita um mestre lidar com potencialmente bilhões de escravos simultaneamente.
+			</p>
+
+			<p><b><i>Host Controller Interface</i> (HCI)</b></p>
+
+			<p>
+				Esta camada atua na comunicação entre o <i>Host</i> e o <i>Controller</i>, transportando comandos e eventos entre ambos.
+			</p>
+
+			<p><b><i>Logical Link Controller And Adaptation Protocol</i> (L2CAP)</b></p>
+
+			<p>
+				Essa camada realiza a transferência dados entre as camadas superiores do <i>Host</i> e camadas inferiores da pilha de protocolos. Ela é responsável pela capacidade de multiplexação de protocolo, segmentação e operação de remontagem para dados trocados entre o <i>Host</i> e a pilha de protocolos. O L2CAP permite que protocolos e aplicativos de alto nível transmitam e recebam pacotes de dados da camada superior de até 64 KB. A versão implementada no Bluetooth LE é uma otimizada e melhorada do protocolo de mesmo nome utilizado no Bluetooth clássico.
+			</p>
+
+			<p><b><i>Security Manager Protocol</i> (SMP)</b></p>
+
+			<p>
+				Este protocolo oferece atua de modo que a troca de informação seja feita de forma segura. Os serviços oferecidos por esta camada incluem autenticação e autorização de dispositivos, e verificações de integridade, confidencialidade e privacidade dos dados trocados.
+			</p>
+
+			<p><b><i>Attribute Protocol</i> (ATT)</b></p>
+
+			<p>
+				Esse protocolo define a comunicação de dois dispositivos: um sendo o servidor e o outro o cliente. O servidor mantém uma série de atributos, que são estruturas de dados que armazenam a informação gerenciada pelo GATT, o protocolo acima do ATT. O papel de servidor ou cliente é determinada pelo GATT, e não depende dos papéis de mestre e escravo. O cliente pode requisitar atributos do servidor, assim como enviar comandos ao servidor de modo a escrever novos valores de atributo.
+			</p>
+
+			<p><b><i>Generic Attribute Profile</i> (GATT)</b></p>
+
+			<p>
+				O GATT define uma estrutura que usa o ATT para a descoberta de serviços e a troca de características de um dispositivo para outro através de um link de baixa energia. Uma característica é um conjunto de dados que incluem um valor e suas propriedades, estes guardados em atributos. Por exemplo, um servidor executando um serviço de sensoriamento de temperatura é responsável por lidar com a característica "temperatura", que usa um atributo para descrever o sensor, outro para o valor medido e outro para a unidade de medida utilizada.
+			</p>		
+
+			<img id="img-bluetooth-3" src="imagens/GATT.jpg" alt="Channels" title="Channels">
+			<span><i>Visão da estrutura utilizada pelo GATT. Retirado de: https://www.bluetooth.com/specifications/gatt/generic-attributes-overview</i></span>				
+			<p><b><i>Generic Access Profile</i> (GAP)</b></p>
+
+			<p>
+				Além de determinar os papéis do dispositivo e os procedimentos necessários para a descoberta de outros dispositivos e serviços, o GAP também trata do controle da conexão estabelecida, permitindo a comunicação direta com aplicação e perfis. No Bluetooth LE, ele pode classificar o dispositivo como um dentre quatro papéis: <i>Broadcaster</i>, <i>Observer</i>, <i>Peripheral</i> ou Central. Destes, <i>Broadcasters</i> e <i>Observers</i> não podem se conectar a outros dispositivos, limitando-se somente a enviar dados nos canais de publicidade e a buscar por dados nesses canais, respectivamente. Já os outros dois, <i>Peripherals</i> e <i>Centrals</i>, podem se conectar, com os dispositivos centrais atuando como mestres e periféricos como escravos.
+			</p>
+
+		</div>
+		
+		<div class="conteudo fonte-pequena justificado" id="aplicacoes">
+			<h1>Aplicações</h1>
+
+			<p>
+				A tecnologia Bluetooth, ao permitir que dispositivos se conectassem sem a necessidade de estarem fisicamente ligados, tornou possível o desenvolvimento de um grande número de aplicações. Tendo isso em mente, e de modo a garantir a funcionalidade e compatibilidade dos mais variados tipos de dispositivos, o Bluetooth SIG criou uma gama de perfis para serem seguidos, com um perfil sendo especificações de interface para a comunicação entre dispositivos baseados em Bluetooth.
+			</p>
+
+			<p>
+				Por exemplo, o Bluetooth pode ser usado para transferir informações entre telefones ou conectar dispositivos como mouses e teclados à computadores. Essas diferentes funções são controladas por perfis diferentes e fornecem aos dispositivos envolvidos as informações sobre a melhor forma de transmitir dados para realizar a função desejada. Destaca-se que mais de um perfil pode ser implementado em um único dispositivo. Todos os perfis são baseados no GAP; este define, como visto na arquitetura, como duas unidades Bluetooth podem descobrir e estabelecer uma conexão entre si.
+			</p>
+
+			<p>
+				O principal diferencial relacionado aos perfis que ocorreu com a criação do <i>Low Energy</i> foi a adição do GATT. Todas as aplicações de baixa energia atualmente são baseadas neste perfil, uma especificação genérica para o envio e recebimento de pequenos pedaços de data conhecidos como "atributos" por um link de baixa energia. 
+			</p>
+
+			<p>
+				Como o Bluetooth pode ser aplicado das mais diversas formas, diversos perfis que possibilitam essas aplicações também foram criados. Dentre os mais utilizados, destacam-se: A2DP (<i>Advanced Audio Distribution Profile</i>), AVRCP (<i>Audio/Video Remote Control Profile</i>), HFP (<i>Hands-Free Profile</i>), FTP (<i>File Transfer Profile</i>), HID (<i>Human Interface Device Profile</i>), PXP (<i>Proximity Profile</i>), HDP (<i>Health Device Profile</i>) e MESH (<i>Mesh Profile</i>).
+			</p>	
+
+			<p>
+				Frequentemente utilizados em conjunto, A2DP e AVRCP atuam em dispositivos que emitem áudio através do Bluetooth. São utilizados frequentemente em fones de ouvido e em sons de carro, por exemplo. Enquanto o A2DP trata do conteúdo do áudio em si, AVRCP trata de comandos como pausar e reiniciar o som, aumentar e diminuir o volume, dentre outros.
+			</p>
+
+			<p>
+				HFP é utilizado principalmente para realizar chamadas telefônicas enquanto dentro de um veículo. FTP, por sua vez, é utilizada para a transferência de arquivos entre dispositivos Bluetooth. HID é utilizado para a conexão de dispositivos como teclados, mouses e controles, e PXP permite monitorar a distância entre dois dispositivos Bluetooth.
+			</p>
+
+			<p>
+				A área de saúde é uma das que mais faz uso das vantagens oferecidas pelo Bluetooth. Vários perfis são baseados no HDP; dentre eles destacam-se: BLP (<i>Blood Pressure Profile</i>), para medição da pressão sanguínea; HTP (<i>Health Thermometer Profile</i>), para medição da temperatura corporal; HRP (<i>Heart Rate Profile</i>), para dispositivos que medem o batimento cardíaco. A principal função do HDP é facilitar a recepção e transmissão de dados de dispositivos médicos.
+			</p>
+
+			<p>
+				Adotado em julho de 2017, o MESH é um perfil para comunicação de muitos-para-muitos através de Bluetooth. Ele suporta encriptação de dados, autenticação de mensagens e destina-se a construir sistemas eficientes de iluminação inteligente e redes IoT.
+			</p>
+
+			<img id="img-bluetooth-4" src="imagens/applications.jpg" alt="Channels" title="Channels">
+			<span><i>Alguns exemplos de aplicações do Bluetooth LE. Retirado de: https://www.slideshare.net/FREEZ7/bluetooth-low-energy-a-case-study</i></span>	
+
+		</div>
+
+		<div class="conteudo fonte-pequena justificado" id="conclusao">
+			<h1>Conclusão</h1>
+			<p>
+				A tendência dos avanços tecnológicos é procurar fazer muito com cada vez menos recursos. Para isso, procura-se cada vez mais otimizar o uso da energia nos mais diversos ramos da tecnologia, e com o Bluetooth não é diferente. Se o Bluetooth auxilia na independência de meios físicos para conexões, o <i>Low Energy</i> veio para ampliar ainda mais o uso desta ferramenta. Com uma arquitetura simples e barata, com tamanho reduzido e baixo consumo energético, o Bluetooth LE se adapta bem a sensores, relógios, aparelhos de saúde, e principalmente na cada vez mais influente internet das coisas. É um passo a mais na caminhada humana para um mundo sem fronteiras.
+			</p>
+		</div>
+		
+		<div class="conteudo fonte-pequena justificado" id="faq">
+			<h1>FAQ</h1>
+			
+			<p class="pergunta">
+				Quais são os modos de conexão do dispositivo BLE?
+			</p>
+			<p class="resposta">
+				O modo "escravo" que se conecta e envia dados a apenas um dispositivo denominado "mestre", e o modo "mestre" que pode se conectar a um ou vários dispositivos "escravos".
+			</p>
+			
+			<p class="pergunta">
+				Cite alguns motivos que tornam a tecnologia BLE econômica em energia.
+			</p>
+			<p class="resposta">
+				Possui baixa taxa de tráfico, com transmissões da ordem de milisegundos e possui um mecanismo que deixa o sistema no estado "dormindo" na maior parte do tempo.
+			</p>
+			
+			<p class="pergunta">
+				O Bluetooth LE é um substituto do Bluetooth clássico?
+			</p>
+			<p class="resposta">
+				Não. O Bluetooth clássico trabalha com tráfego contínuo enquanto que o Bluetooth LE tem tráfego baixo e de transmissões curtas para diminuir seu consumo de energia. Assim, os propósitos deles são distintos, cabendo a utilização de uma ou outra de acordo com a finalidade e necessidade do produto em questão.
+			</p>
+			
+			<p class="pergunta">
+				É possível haver interferência entre um sinal Bluetooth e um sinal de Wi-Fi? Se sim, existe alguma maneira de minimizar este problema?
+			</p>
+			<p class="resposta">
+				Sim, é possível uma vez que ambos operam numa frequência de 2.4Ghz. Porém, o BLE possui um mecanismo denominado AFH (Adaptative Frequency Hopping) que evita utilizar as frequências já ocupadas, reduzindo consideravelmente a possibilidade de ocorrerem interferências.
+			</p>
+
+			<p class="pergunta">
+				Quais as principais inovações feitas pelo Bluetooth 5?
+			</p>
+			<p class="resposta">
+				Bluetooth 5 possui quatro vezes o alcance (usualmente até 40 metros) e o dobro da velocidade (até 2 Mb/s) da versão 4.2, além de ter introduzido o Dual Audio.
+			</p>
+
+		</div>
+
+		<div class="conteudo fonte-pequena justificado" id="referencias">
+			<h1>Referências</h1>
+			<p>
+				[1] GALEEV, Mikhail. <b>Bluetooth 4.0: An introduction to Bluetooth Low Energy – Part I.</b> EE Times, set. 2011. Disponível em: https://www.eetimes.com/document.asp?doc_id=1278927  Acessado em 8 de Abril de 2018.
+			</p>
+			<p>
+				[2] WHITTAKER, Tim. <b>Bluetooth low energy (BLE) explained. EE Times, jul. 2011.</b> Disponível em: https://www.eetimes.com/document.asp?doc_id=1278968  Acessado em 8 de Abril de 2018.
+			</p>
+			<p>
+				[3] FURSET, Kjartan. <b>Inside Bluetooth low-energy technology. EE Times, nov. 2010.</b> Disponível em: https://www.eetimes.com/document.asp?doc_id=1278425  Acessado em 8 de Abril de 2018.
+			</p>
+			<p>
+				[4] GOMEZ, C.; OLLER, J.; PARADELLS, J. <b>Overview and Evaluation of Bluetooth Low Energy: An Emerging Low-Power Wireless Technology.</b> Sensors, v. 12, n. 9, p.11734-11753, ago. 2012. Disponível em: http://www.mdpi.com/1424-8220/12/9/11734/pdf Acessado em 8 de Abril de 2018.
+			</p>
+			<p>
+				[5] HENLEY, Allen. <b>Bluetooth Low Energy 101, oct. 2016.</b> Disponível em: https://www.rfglobalnet.com/doc/bluetooth-low-energy-0001 Acessado em 8 de Abril de 2018.
+			</p>
+			<p>
+				[6] HENLEY, Allen. <b>Bluetooth 5: More speeds, more range, new RF tests, nov. 2017</b>. Disponível em: https://www.edn.com/design/test-and-measurement/4459086/Bluetooth-5--More-speeds--more-range--new-RF-tests Acessado em 8 de Abril de 2018.
+			</p>
+			<p>
+				[7] BLUETOOTH SIG. <b>Bluetooth Specifications Version 4.0.</b> Disponível em http://www.bluetooth.org Acessado em 8 de Abril de 2018.
+			</p>
+			<p>
+				[8] BLUETOOTH SIG. <b>Bluetooth Specifications Version 5.0.</b> Disponível em http://www.bluetooth.org Acessado em 8 de Abril de 2018.
+			</p>
+			<p>
+				[9] ALECRIM, Emerson. <b>Tecnologia Bluetooth: o que é e como funciona?</b> Disponível em https://www.infowester.com/bluetooth.php Acessado em 6 de Maio de 2018.
+			</p>
+			<p>
+				[10] ZHANG, Vincent. <b>Comparison of Bluetooth Different Versions</b> Disponível em http://wistao.blogspot.com/2012/09/comparison-of-bluetooth-different.html Acessado em 31 de Maio de 2018.
+			</p>
+
+			<p>
+				[11] Texas Instruments. <b>BLE5-Stack User's Guide</b> Disponível em http://dev.ti.com/tirex/content/simplelink_cc2640r2_sdk_1_35_00_33/docs/ble5stack/ble_user_guide/html/cc2640/index.html Acessado em 2 de Junho de 2018.
+			</p>
+
+		</div>
+
+		<div class="conteudo fonte-pequena justificado" id="autoria">
+			<h1>Declaração de Autoria</h1>
+			<p>
+				"Este trabalho foi totalmente produzido pelos autores que declaram não terem violado os direitos autorais de terceiros, sejam eles pessoas físicas ou jurídicas. Havendo textos, tabelas e figuras transcritos de obras de terceiros com direitos autorais protegidos ou de domínio público tal como idéias e conceitos de terceiros, mesmo que sejam encontrados na Internet, os mesmos estão com os devidos créditos aos autores originais e estão incluídas apenas com o intuito de deixar o trabalho autocontido. O(s) autor(es) tem(êm) ciência dos Artigos 297 a 299 do Código Penal Brasileiro e também que o uso do artifício de copiar/colar texto de outras fontes e outras formas de plágio é um ato ilícito, condenável e passível de punição severa. No contexto da Universidade a punição não precisa se restringir à reprovação na disciplina e pode gerar um processo disciplinar que pode levar o(s) aluno(s) à suspensão;"
+			</p>
+		</div>
+
+	</body>
+	<footer>
+	
+	</footer>
+</html>
